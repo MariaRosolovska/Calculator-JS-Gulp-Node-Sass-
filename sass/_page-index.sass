@@ -1,0 +1,364 @@
+/* Анімація під заголовком */
+.warning
+  font-weight: 200
+  margin: 0 auto 6em
+  max-width: 12em
+  width: 22ch
+  animation: typing 3s steps(22), blink 0.5s step-end infinite alternate
+  font-family: monospace
+  font-size: 20px
+  white-space: nowrap
+  overflow: hidden
+  border-right: 1px solid black
+  color: #661d1d
+  text-shadow: 1px 1px 3px white
+  letter-spacing: 1px
+
+@keyframes typing
+  from
+    width: 0
+
+@keyframes blink
+  50%
+    border-color: transparent
+
+
+/* Основа калькулятора */
+.calculator
+  font-size: 35px
+  margin: 0 auto
+  width: 10em
+
+  &::before
+    content: " "
+    display: table
+
+  &::after
+    content: " "
+    display: table
+    clear: both
+
+/* Калькулятор після ділення на нуль */
+.broken
+  -webkit-animation: broken 2s
+  animation: broken 2s
+  transform: translate3d(0, -2000px, 0)
+  opacity: 0
+
+
+/* Кнопки */
+.viewer
+  color: #fff
+  float: left
+  line-height: 3em
+  text-align: right
+  text-overflow: ellipsis
+  overflow: hidden
+  width: 7.5em
+  height: 3em
+
+.clear
+  color: #fff
+
+button
+  border: 0
+  background: rgba(255, 138, 72, 0.65)
+  color: #9b3957
+  cursor: pointer
+  float: left
+  font: inherit
+  margin: 0.25em
+  width: 2em
+  height: 2em
+  transition: all 0.5s
+
+  &:hover
+    background: rgba(231, 113, 47, 0.89)
+    color: #100a1c
+
+  &:focus
+    outline: 0
+
+    &::after
+      -webkit-animation: zoom 1s
+      animation: zoom 1s
+      -webkit-animation-iteration-count: 1
+      animation-iteration-count: 1
+      -webkit-animation-fill-mode: both
+      animation-fill-mode: both
+      content: attr(data-num)
+      cursor: default
+      font-size: 100px
+      position: absolute
+      top: 1.5em
+      left: 50%
+      text-align: center
+      margin-left: -24px
+      opacity: 0
+      width: 48px
+
+.ops
+  background-color: rgba(248, 68, 23, 0.65)
+  color: white
+
+  &:hover
+    color: rgba(184, 47, 13, 0.65)
+    background-color: white
+
+
+/* змінено для операторів */
+.ops:focus::after
+  content: attr(data-ops)
+  margin-left: -210px
+  width: 420px
+
+/* змінено для результату */
+.equals:focus::after
+  content: attr(data-result)
+  margin-left: -300px
+  width: 600px
+
+
+/* Кнопка скидання */
+.reset
+  background: #66340bc9
+  color: #fff
+  font-weight: 400
+  margin-left: -77px
+  padding: 0.5em 1em
+  position: absolute
+  top: -20em
+  left: 50%
+  width: auto
+  height: auto
+
+  &:hover
+    background: #c09d7f4f
+    color: #100a1c
+
+  &.show
+    top: 20em
+    -webkit-animation: fadein 4s
+    animation: fadein 4s
+
+
+/* Анімації */
+/* Значення, які відображаються при натисканні */
+@-webkit-keyframes zoom
+  0%
+    transform: scale(0.2)
+    opacity: 1
+
+  70%
+    transform: scale(1)
+
+  100%
+    opacity: 0
+
+@keyframes zoom
+  0%
+    transform: scale(0.2)
+    opacity: 1
+
+  70%
+    transform: scale(1)
+
+  100%
+    opacity: 0
+
+
+/* Ділення на нуль анімації */
+@-webkit-keyframes broken
+  0%
+    transform: translate3d(0, 0, 0)
+    opacity: 1
+
+  5%
+    transform: rotate(5deg)
+
+  15%
+    transform: rotate(-5deg)
+
+  20%
+    transform: rotate(5deg)
+
+  25%
+    transform: rotate(-5deg)
+
+  50%
+    transform: rotate(45deg)
+
+  70%
+    transform: translate3d(0, 2000px, 0)
+    opacity: 1
+
+  75%
+    opacity: 0
+
+  100%
+    transform: translate3d(0, -2000px, 0)
+
+@keyframes broken
+  0%
+    transform: translate3d(0, 0, 0)
+    opacity: 1
+
+  5%
+    transform: rotate(5deg)
+
+  15%
+    transform: rotate(-5deg)
+
+  20%
+    transform: rotate(5deg)
+
+  25%
+    transform: rotate(-5deg)
+
+  50%
+    transform: rotate(45deg)
+
+  70%
+    transform: translate3d(0, 2000px, 0)
+    opacity: 1
+
+  75%
+    opacity: 0
+
+  100%
+    transform: translate3d(0, -2000px, 0)
+
+
+/* Кнопка скидання  fadein */
+@-webkit-keyframes fadein
+  0%
+    top: 20em
+    opacity: 0
+
+  50%
+    opacity: 0
+
+  100%
+    opacity: 1
+
+@keyframes fadein
+  0%
+    top: 20em
+    opacity: 0
+
+  50%
+    opacity: 0
+
+  100%
+    opacity: 1
+
+@media (min-width: 420px)
+  .calculator
+    width: 12em
+
+  .viewer
+    width: 8.5em
+
+  button
+    margin: 0.5em
+
+
+
+
+
+
+/* Просто для фону */
+.bubbles
+  position: absolute
+  bottom: -120px
+  display: flex
+  flex-wrap: wrap
+  margin-top: 70px
+  width: 100%
+  justify-content: space-around
+
+  span
+    height: 60px
+    width: 60px
+    background: rgba(255, 255, 255, 0.1)
+    animation: move 20s linear infinite
+    position: relative
+    overflow: hidden
+
+    &.one
+      animation-delay: 2.2s
+      transform: scale(2.15)
+
+    &.two
+      animation-delay: 3.5s
+      transform: scale(1.55)
+
+    &.three
+      animation-delay: 0.2s
+      transform: scale(0.35)
+
+    &.four
+      animation-delay: 6s
+      transform: scale(2.15)
+
+    &.five
+      animation-delay: 7s
+      transform: scale(0.5)
+
+    &.six
+      animation-delay: 4s
+      transform: scale(2.5)
+
+    &.seven
+      animation-delay: 3
+      transform: scale(1.5)
+
+    &:before
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      height: 60px
+      width: 40%
+      transform: skew(45deg) translateX(150px)
+      background: rgba(255, 255, 255, 0.15)
+      animation: mirror 3s linear infinite
+
+    &.one:before
+      animation-delay: 1.5s
+
+    &.two:before
+      animation-delay: 3.5s
+
+    &.three:before
+      animation-delay: 2.5s
+
+    &.four:before
+      animation-delay: 7.5s
+
+    &.five:before
+      animation-delay: 4.5s
+
+    &.six:before
+      animation-delay: 0.5s
+
+    &.seven:before
+      animation-delay: 6s
+
+@keyframes move
+  100%
+    transform: translateY(-100vh)
+
+@keyframes mirror
+  100%
+    transform: translateX(-450px)
+
+.container
+  z-index: 12
+  width: 360px
+  padding: 15px
+  border-radius: 12px
+  background: rgba(255, 255, 255, 0.1)
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15)
+  border-top: 1px solid rgba(255, 255, 255, 0.5)
+  border-left: 1px solid rgba(255, 255, 255, 0.5)

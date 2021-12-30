@@ -1,0 +1,34 @@
+/* Фон */
+
+html
+  background-image: radial-gradient(50% 35% ellipse at center top, #F1B47E 0%, #FAA25D 100%)
+  background-attachment: fixed
+
+body
+  font: 300 18px/1.6 "Source Sans Pro", sans-serif
+  margin: 0
+  padding: 2em 0 2em
+  text-align: center
+
+
+/* Заголовок */
+h1
+  color: #484848
+  font-size: 40px
+  font-weight: bold
+  font-family: monospace
+  letter-spacing: 7px
+  cursor: pointer
+
+  span
+    transition: 0.5s linear
+
+  &:hover span
+    &:nth-child(1)
+      margin-right: 5px
+
+    &:nth-child(2)
+      margin-left: 30px
+
+    color: #fff
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #fff
